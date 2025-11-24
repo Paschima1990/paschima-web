@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { useForm, useFieldArray } from 'react-hook-form'
+import { useForm, useFieldArray, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Button } from '@/components/ui/button'
@@ -298,16 +298,26 @@ export function BookForm({ book, onSubmit, onCancel, loading = false }: Props) {
 
         <div className="md:col-span-2">
           <div className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
-            <input
-              type="checkbox"
-              id="isBestseller"
-              {...register('isBestseller')}
-              className="w-5 h-5 text-[#635BFF] border-gray-300 rounded focus:ring-[#635BFF] focus:ring-2"
+            <Controller
+              name="isBestseller"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <input
+                  type="checkbox"
+                  id="isBestseller"
+                  checked={value || false}
+                  onChange={(e) => onChange(e.target.checked)}
+                  className="w-5 h-5 text-[#635BFF] border-gray-300 rounded focus:ring-[#635BFF] focus:ring-2"
+                />
+              )}
             />
             <Label htmlFor="isBestseller" className="text-base font-medium cursor-pointer">
               Mark as Bestseller
             </Label>
           </div>
+          {errors.isBestseller && (
+            <p className="text-sm text-red-600 mt-1">{errors.isBestseller.message}</p>
+          )}
           <p className="text-xs text-gray-500 mt-2">
             Books marked as bestseller will appear in the bestseller section on the homepage
           </p>

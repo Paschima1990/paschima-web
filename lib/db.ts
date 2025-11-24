@@ -1,10 +1,12 @@
 import { drizzle } from 'drizzle-orm/libsql'
 import { createClient } from '@libsql/client'
+import Database from 'better-sqlite3'
+import { drizzle as drizzleBetterSqlite } from 'drizzle-orm/better-sqlite3'
 import * as schema from './db/schema'
 
 const globalForDb = globalThis as unknown as {
-  db: ReturnType<typeof drizzle> | undefined
-  client: ReturnType<typeof createClient> | undefined
+  db: ReturnType<typeof drizzle> | ReturnType<typeof drizzleBetterSqlite> | undefined
+  client: ReturnType<typeof createClient> | Database.Database | undefined
 }
 
 // Support both Turso (production) and local SQLite (development)
@@ -27,10 +29,9 @@ function createDatabaseClient() {
       authToken: authToken,
     })
   } else {
-    // Local SQLite file (for development)
-    return createClient({
-      url: dbUrl.replace(/^file:/, ''),
-    })
+    // Local SQLite file (for development) - use better-sqlite3
+    const filePath = dbUrl.replace(/^file:/, '')
+    return new Database(filePath)
   }
 }
 
@@ -39,9 +40,15 @@ const client =
 
 if (process.env.NODE_ENV !== 'production') globalForDb.client = client
 
+// Create appropriate drizzle instance based on client type
+const dbUrl = process.env.DATABASE_URL || ''
+const isTurso = dbUrl.startsWith('libsql://') || dbUrl.startsWith('https://') || dbUrl.startsWith('http://')
+
 export const db =
   globalForDb.db ??
-  drizzle(client, { schema })
+  (isTurso
+    ? drizzle(client as ReturnType<typeof createClient>, { schema })
+    : drizzleBetterSqlite(client as Database.Database, { schema }))
 
 if (process.env.NODE_ENV !== 'production') globalForDb.db = db
 
