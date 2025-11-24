@@ -1,0 +1,12 @@
+# Cursor Project Spec — Stripe-Press-Style Website
+name: "stripe-press-style"
+description: "Project spec for a Stripe-Press-style editorial site with 3D book cards, Next.js (App Router), TailwindCSS, TypeScript and Framer Motion."
+version: "1.0"
+author: "generated-by-chatgpt"
+requirements:
+  - "Next.js (App Router) + TypeScript"
+  - "Tailwind CSS for styling"
+  - "Framer Motion for subtle animations only"
+  - "CSS-based 3D book cards (use WebGL only if required)"
+  - "Homepage grid, dynamic book pages at /book/[slug], mock data via lib/getBooks.ts"
+  - "Responsive, accessible, SEO-friendly"
