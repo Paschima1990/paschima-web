@@ -52,7 +52,7 @@ export default function Navigation() {
         <div className="flex h-16 items-center justify-between gap-4">
           <Link href="/" className="flex items-center shrink-0 hover:opacity-80 transition-opacity">
             <Image
-              src="/Logo/paschimaLogo.webp"
+              src="/Logo/PaschimaLogo.webp"
               alt="Paschima Publication"
               width={120}
               height={40}

@@ -139,8 +139,21 @@ const mockBooks: Book[] = [
 
 export async function getBooks(): Promise<Book[]> {
   try {
+    // Check if database environment variables are set
+    if (!process.env.DATABASE_URL) {
+      console.error('DATABASE_URL environment variable is not set')
+      return []
+    }
+
     // Fetch from database
     const dbBooks = await db.select().from(books).orderBy(desc(books.createdAt))
+
+    // Log success for debugging
+    if (dbBooks.length === 0) {
+      console.log('No books found in database')
+    } else {
+      console.log(`Successfully fetched ${dbBooks.length} books from database`)
+    }
 
     // Transform database books to match Book type
     return dbBooks.map((book) => ({
@@ -163,7 +176,17 @@ export async function getBooks(): Promise<Book[]> {
       isBestseller: book.isBestseller === '1' || book.isBestseller === 'true',
     }))
   } catch (error) {
-    console.error('Error fetching books from database:', error)
+    // Enhanced error logging
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    const errorName = error instanceof Error ? error.name : 'Error'
+    console.error('Error fetching books from database:', {
+      name: errorName,
+      message: errorMessage,
+      hasDatabaseUrl: !!process.env.DATABASE_URL,
+      hasTursoToken: !!process.env.TURSO_AUTH_TOKEN,
+      databaseUrlType: process.env.DATABASE_URL?.startsWith('libsql://') ? 'Turso' : 
+                       process.env.DATABASE_URL?.startsWith('file:') ? 'Local SQLite' : 'Unknown'
+    })
     // Return empty array on error - no mock data fallback
     return []
   }
