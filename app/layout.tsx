@@ -19,7 +19,7 @@ const merriweather = Merriweather({
 })
 
 export const metadata = {
-  title: 'Paschima Publications — Odia Language Books',
+  title: 'Paschima Publications',
   description: 'Paschima Publications is a leading Odia language book publisher based in Bhubaneswar, Odisha, dedicated to enriching the literary landscape with captivating stories, insightful poetry, engaging essays, and diverse non-fiction works.'
 }
 
