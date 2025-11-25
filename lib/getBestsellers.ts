@@ -1,16 +1,20 @@
 import { db } from './db'
 import { books } from './db/schema'
-import { eq } from 'drizzle-orm'
+import { eq, and, isNotNull } from 'drizzle-orm'
 import { desc } from 'drizzle-orm'
 import type { Book } from './getBooks'
 
 export async function getBestsellers(): Promise<Book[]> {
   try {
     // Fetch books marked as bestsellers from database
+    // Only include books where isBestseller is exactly '1' (not '0', 'true', null, or empty)
     const dbBooks = await db
       .select()
       .from(books)
-      .where(eq(books.isBestseller, '1'))
+      .where(and(
+        isNotNull(books.isBestseller),
+        eq(books.isBestseller, '1')
+      ))
       .orderBy(desc(books.createdAt))
       .limit(5)
 

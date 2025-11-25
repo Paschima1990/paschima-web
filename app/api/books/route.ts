@@ -52,7 +52,7 @@ export async function GET() {
       buyLinks: book.buyLinks ? JSON.parse(book.buyLinks) : undefined,
       isbn: book.isbn || undefined,
       type: book.type || undefined,
-      isBestseller: book.isBestseller === '1' || book.isBestseller === 'true',
+      isBestseller: book.isBestseller === '1', // Only '1' is true, everything else is false
     }))
 
     return NextResponse.json(transformedBooks)

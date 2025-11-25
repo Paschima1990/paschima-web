@@ -173,7 +173,7 @@ export async function getBooks(): Promise<Book[]> {
       buyLinks: book.buyLinks ? JSON.parse(book.buyLinks) : undefined,
       isbn: book.isbn || undefined,
       type: book.type || undefined,
-      isBestseller: book.isBestseller === '1' || book.isBestseller === 'true',
+      isBestseller: book.isBestseller === '1', // Only '1' is true, everything else is false
     }))
   } catch (error) {
     // Enhanced error logging
@@ -184,8 +184,8 @@ export async function getBooks(): Promise<Book[]> {
       message: errorMessage,
       hasDatabaseUrl: !!process.env.DATABASE_URL,
       hasTursoToken: !!process.env.TURSO_AUTH_TOKEN,
-      databaseUrlType: process.env.DATABASE_URL?.startsWith('libsql://') ? 'Turso' : 
-                       process.env.DATABASE_URL?.startsWith('file:') ? 'Local SQLite' : 'Unknown'
+      databaseUrlType: process.env.DATABASE_URL?.startsWith('libsql://') ? 'Turso' :
+        process.env.DATABASE_URL?.startsWith('file:') ? 'Local SQLite' : 'Unknown'
     })
     // Return empty array on error - no mock data fallback
     return []
