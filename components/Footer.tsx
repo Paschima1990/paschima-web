@@ -120,6 +120,17 @@ export function Footer() {
           <p className="text-sm text-gray-500 text-center">
             © {new Date().getFullYear()} Paschima Publications. All rights reserved.
           </p>
+          <p className="text-xs text-gray-400 text-center mt-3">
+            Designed & Developed by{' '}
+            <a
+              href="https://www.trerons.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-[#635BFF] transition-colors font-medium"
+            >
+              Trerons
+            </a>
+          </p>
         </div>
       </div>
     </footer>
