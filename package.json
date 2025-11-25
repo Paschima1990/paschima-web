@@ -10,7 +10,8 @@
     "db:seed": "tsx lib/db/seed.ts",
     "db:migrate": "drizzle-kit generate:sqlite",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "db:sync": "tsx lib/db/sync-to-turso.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

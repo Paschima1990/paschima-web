@@ -95,7 +95,7 @@ export function Footer() {
         <div className="border-t border-gray-200 pt-8 mt-8">
           <div className="flex items-center justify-center gap-6 mb-6">
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/paschimapublications"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-[#635BFF] transition-colors"
@@ -104,7 +104,7 @@ export function Footer() {
               <Instagram className="h-5 w-5" />
             </a>
             <a
-              href="https://www.facebook.com"
+              href="https://www.facebook.com/Paschima"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-[#635BFF] transition-colors"

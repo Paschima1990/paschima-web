@@ -88,7 +88,7 @@ export default function ContactPage() {
                         </p>
                         <div className="flex items-center gap-4 sm:gap-6">
                             <a
-                                href="https://www.instagram.com"
+                                href="https://www.instagram.com/paschimapublications"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-[#635BFF] hover:text-[#5548E5] transition-colors font-medium text-base sm:text-lg inline-flex items-center gap-2"
@@ -98,7 +98,7 @@ export default function ContactPage() {
                             </a>
                             <span className="text-gray-300">|</span>
                             <a
-                                href="https://www.facebook.com"
+                                href="https://www.facebook.com/Paschima"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-[#635BFF] hover:text-[#5548E5] transition-colors font-medium text-base sm:text-lg inline-flex items-center gap-2"
@@ -122,7 +122,7 @@ export default function ContactPage() {
                         <li className="flex items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                             <ExternalLink className="h-5 w-5 text-[#635BFF] shrink-0" />
                             <Link
-                                href="https://www.amazon.in"
+                                href="https://amzn.to/48uHRDX"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-base sm:text-lg text-gray-700 hover:text-[#635BFF] transition-colors font-medium flex-1"
@@ -133,7 +133,7 @@ export default function ContactPage() {
                         <li className="flex items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                             <ExternalLink className="h-5 w-5 text-[#635BFF] shrink-0" />
                             <Link
-                                href="https://www.odishaestore.com"
+                                href="https://www.odishaestore.com/paschima-publications"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-base sm:text-lg text-gray-700 hover:text-[#635BFF] transition-colors font-medium flex-1"
@@ -144,7 +144,7 @@ export default function ContactPage() {
                         <li className="flex items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                             <ExternalLink className="h-5 w-5 text-[#635BFF] shrink-0" />
                             <Link
-                                href="https://ritikart.com"
+                                href="https://ritikart.com/collections/books?sort_by=best-selling&filter.v.option.publisher=Paschima+Publications&filter.v.price.gte=&filter.v.price.lte="
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-base sm:text-lg text-gray-700 hover:text-[#635BFF] transition-colors font-medium flex-1"
@@ -155,7 +155,7 @@ export default function ContactPage() {
                         <li className="flex items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                             <ExternalLink className="h-5 w-5 text-[#635BFF] shrink-0" />
                             <Link
-                                href="https://odiabookbazar.com"
+                                href="https://www.odiabookbazar.com/index.php?route=product/manufacturer/info&manufacturer_id=18"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-base sm:text-lg text-gray-700 hover:text-[#635BFF] transition-colors font-medium flex-1"

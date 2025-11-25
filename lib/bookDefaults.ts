@@ -26,7 +26,7 @@ export function generateDefaultCover(slug: string): string {
  * Generate default description from title and author
  */
 export function generateDefaultDescription(title: string, author: string): string {
-  return `A book by ${author}. ${title} explores important themes and ideas.`
+  return `A book by ${author}. ${title}`
 }
 
 /**
@@ -67,10 +67,10 @@ export function calculateContrastColor(backgroundColor: string): string {
   const r = parseInt(hex.substr(0, 2), 16)
   const g = parseInt(hex.substr(2, 2), 16)
   const b = parseInt(hex.substr(4, 2), 16)
-  
+
   // Calculate luminance
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
-  
+
   // Return dark or light text based on background
   return luminance > 0.5 ? '#000000' : '#FFFFFF'
 }

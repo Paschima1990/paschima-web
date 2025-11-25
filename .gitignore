@@ -12,3 +12,4 @@ prisma/dev.db*
 .next
 out
 dist
+.vercel
