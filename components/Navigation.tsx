@@ -62,16 +62,13 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4 flex-1 justify-center max-w-2xl mx-4">
+          <div className="hidden md:flex items-center gap-6 shrink-0 ml-auto">
             <SearchBar
               onSearch={handleSearch}
               placeholder="ପୁସ୍ତକ ସନ୍ଧାନ କରନ୍ତୁ..."
-              className="flex-1 max-w-md"
               books={books}
               showSuggestions={true}
             />
-          </div>
-          <div className="hidden md:flex items-center gap-6 shrink-0">
             <Link
               href="/book"
               className="text-sm font-medium text-gray-600 hover:text-[#0A0A0A] transition-colors shrink-0"
@@ -93,28 +90,30 @@ export default function Navigation() {
             {isAdmin && <AdminLink />}
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden shrink-0"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
+          {/* Mobile Navigation - Search + Menu Button */}
+          <div className="md:hidden flex items-center gap-3 shrink-0">
+            <SearchBar
+              onSearch={handleSearch}
+              placeholder="ପୁସ୍ତକ ସନ୍ଧାନ କରନ୍ତୁ..."
+              books={books}
+              showSuggestions={true}
+            />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="shrink-0"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu Dropdown - No Search Here */}
         {isOpen && (
           <div className="md:hidden border-t border-gray-200 py-4">
             <div className="flex flex-col gap-4">
-              <SearchBar
-                onSearch={handleSearch}
-                placeholder="ପୁସ୍ତକ ସନ୍ଧାନ କରନ୍ତୁ..."
-                books={books}
-                showSuggestions={true}
-              />
               <Link
                 href="/book"
                 className="text-sm font-medium text-gray-600 hover:text-[#0A0A0A] transition-colors"
