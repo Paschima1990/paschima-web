@@ -25,7 +25,7 @@ export default function ContactPage() {
                     <div className="flex items-start gap-3 sm:gap-4 mb-8">
                         <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-[#635BFF] mt-0.5 shrink-0" />
                         <div className="text-gray-700 leading-relaxed text-base sm:text-lg">
-                            <p className="font-semibold text-[#0A0A0A] mb-1">Plot No- 1822, Nayapalli</p>
+                            <p className="font-semibold text-[#0A0A0A] mb-1">Plot No- 1882, Nayapalli</p>
                             <p>Bhubaneswar, Odisha</p>
                             <p>India, 751012</p>
                         </div>
