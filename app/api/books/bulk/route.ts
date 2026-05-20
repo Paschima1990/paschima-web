@@ -184,7 +184,7 @@ export async function POST(request: NextRequest) {
 
         // Generate defaults
         const colors = generateDefaultColors(title)
-        const cover = generateDefaultCover(slug)
+        const cover = generateDefaultCover()
         const description = generateDefaultDescription(title, author)
 
         // Insert book

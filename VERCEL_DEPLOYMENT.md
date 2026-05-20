@@ -330,6 +330,4 @@ Once deployed, your site will be:
 - [Vercel Discord](https://vercel.com/discord)
 - [Next.js Deployment](https://nextjs.org/docs/deployment)
 
----
-
-**Ready to deploy?** Follow the steps above and your site will be live in minutes! 🚀
+---**Ready to deploy?** Follow the steps above and your site will be live in minutes! 🚀

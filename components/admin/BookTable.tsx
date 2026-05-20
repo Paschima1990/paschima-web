@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import { Edit, Trash2, Plus, Search, FileSpreadsheet } from 'lucide-react'
 import type { Book } from '@/lib/getBooks'
+import { searchBooks } from '@/lib/search'
 import { Pagination } from '@/components/ui/pagination'
 
 const ITEMS_PER_PAGE = 10
@@ -80,14 +81,7 @@ export function BookTable() {
     }
   }
 
-  const filteredBooks = books.filter((book) => {
-    const query = searchQuery.toLowerCase()
-    return (
-      book.title.toLowerCase().includes(query) ||
-      book.author.toLowerCase().includes(query) ||
-      book.description.toLowerCase().includes(query)
-    )
-  })
+  const filteredBooks = searchBooks(books, searchQuery)
 
   // Reset to page 1 when search changes
   useEffect(() => {

@@ -53,4 +53,3 @@ export const db =
 if (process.env.NODE_ENV !== 'production') globalForDb.db = db
 
 export { schema }
-export type { Book, NewBook } from './db/schema'

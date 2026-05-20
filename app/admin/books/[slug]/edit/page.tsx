@@ -2,24 +2,9 @@
 import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { AdminNav } from '@/components/admin/AdminNav'
-import { BookForm } from '@/components/admin/BookForm'
+import { BookForm, type BookFormData } from '@/components/admin/BookForm'
 import { useToast } from '@/components/ui/use-toast'
 import type { Book } from '@/lib/getBooks'
-
-type BookFormData = {
-  title: string
-  author: string
-  slug: string
-  cover: string
-  description: string
-  backgroundColor: string
-  textColor: string
-  summary?: string
-  authorBio?: string
-  authorTwitter?: string
-  authorWebsite?: string
-  buyLinks?: Array<{ label: string; url: string; price?: string }>
-}
 
 export default function EditBookPage() {
   const router = useRouter()

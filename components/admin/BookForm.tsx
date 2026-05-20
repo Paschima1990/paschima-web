@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import { useForm, useFieldArray, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -11,30 +10,10 @@ import { Select } from '@/components/ui/select'
 import { Plus, X } from 'lucide-react'
 import type { Book } from '@/lib/getBooks'
 import { BOOK_TYPES } from '@/lib/bookTypes'
+import { bookFormSchema, type BookFormData } from '@/lib/schemas/book'
+import { generateSlug } from '@/lib/bookDefaults'
 
-const bookSchema = z.object({
-  title: z.string().min(1, 'Title is required'),
-  author: z.string().min(1, 'Author is required'),
-  slug: z.string().min(1, 'Slug is required').regex(/^[a-z0-9-]+$/, 'Slug must contain only lowercase letters, numbers, and hyphens'),
-  cover: z.string().min(1, 'Cover image URL is required'),
-  description: z.string().min(1, 'Description is required'),
-  backgroundColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/, 'Must be a valid hex color'),
-  textColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/, 'Must be a valid hex color'),
-  summary: z.string().optional(),
-  authorBio: z.string().optional(),
-  authorTwitter: z.string().url().optional().or(z.literal('')),
-  authorWebsite: z.string().url().optional().or(z.literal('')),
-  buyLinks: z.array(z.object({
-    label: z.string().min(1),
-    url: z.string().url(),
-    price: z.string().optional(),
-  })).optional(),
-  isbn: z.string().optional().or(z.literal('')),
-  type: z.string().optional().or(z.literal('')),
-  isBestseller: z.boolean().optional(),
-})
-
-type BookFormData = z.infer<typeof bookSchema>
+export type { BookFormData }
 
 type Props = {
   book?: Book
@@ -52,7 +31,7 @@ export function BookForm({ book, onSubmit, onCancel, loading = false }: Props) {
     watch,
     setValue,
   } = useForm<BookFormData>({
-    resolver: zodResolver(bookSchema),
+    resolver: zodResolver(bookFormSchema),
     defaultValues: book
       ? {
         title: book.title,
@@ -88,14 +67,9 @@ export function BookForm({ book, onSubmit, onCancel, loading = false }: Props) {
   const backgroundColor = watch('backgroundColor')
   const textColor = watch('textColor')
 
-  // Auto-generate slug from title
   useEffect(() => {
     if (!book && title) {
-      const slug = title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, '')
-      setValue('slug', slug)
+      setValue('slug', generateSlug(title))
     }
   }, [title, book, setValue])
 

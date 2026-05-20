@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createSession, getAdminPassword, verifyPassword, hashPassword } from '@/lib/auth'
+import { createSession, getAdminPassword } from '@/lib/auth'
 
 export const dynamic = 'force-dynamic'
 

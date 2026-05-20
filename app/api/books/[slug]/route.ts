@@ -2,32 +2,12 @@ import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { books } from '@/lib/db/schema'
 import { isAuthenticated } from '@/lib/auth'
+import { bookSchema } from '@/lib/schemas/book'
+import { mapDbRowToBook } from '@/lib/mapBook'
 import { z } from 'zod'
 import { eq } from 'drizzle-orm'
 
 export const dynamic = 'force-dynamic'
-
-const bookSchema = z.object({
-  title: z.string().min(1),
-  author: z.string().min(1),
-  slug: z.string().min(1),
-  cover: z.string().url().or(z.string().startsWith('/')),
-  description: z.string().min(1),
-  backgroundColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
-  textColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
-  summary: z.string().optional(),
-  authorBio: z.string().optional(),
-  authorTwitter: z.string().url().optional().or(z.literal('')),
-  authorWebsite: z.string().url().optional().or(z.literal('')),
-  buyLinks: z.array(z.object({
-    label: z.string(),
-    url: z.string(),
-    price: z.string().optional(),
-  })).optional(),
-  isbn: z.string().optional().or(z.literal('')),
-  type: z.string().optional().or(z.literal('')),
-  isBestseller: z.boolean().optional().default(false),
-})
 
 // GET - Get single book
 export async function GET(
@@ -45,28 +25,7 @@ export async function GET(
       )
     }
 
-    // Transform to match Book type
-    const transformedBook = {
-      slug: book.slug,
-      title: book.title,
-      author: book.author,
-      cover: book.cover,
-      description: book.description,
-      backgroundColor: book.backgroundColor,
-      textColor: book.textColor,
-      summary: book.summary || undefined,
-      authorBio: book.authorBio || undefined,
-      authorLinks: {
-        twitter: book.authorTwitter || undefined,
-        website: book.authorWebsite || undefined,
-      },
-      buyLinks: book.buyLinks ? JSON.parse(book.buyLinks) : undefined,
-      isbn: book.isbn || undefined,
-      type: book.type || undefined,
-      isBestseller: book.isBestseller === '1', // Only '1' is true, everything else is false
-    }
-
-    return NextResponse.json(transformedBook)
+    return NextResponse.json(mapDbRowToBook(book))
   } catch (error) {
     console.error('Error fetching book:', error)
     return NextResponse.json(

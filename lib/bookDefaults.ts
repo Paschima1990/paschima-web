@@ -17,9 +17,8 @@ export function generateSlug(title: string): string {
 /**
  * Generate default cover image path
  */
-export function generateDefaultCover(slug: string): string {
-  // Use a placeholder or default cover
-  return `/covers/book1.jpg` // Default cover image
+export function generateDefaultCover(): string {
+  return '/covers/book1.jpg'
 }
 
 /**
@@ -56,22 +55,5 @@ export function generateDefaultColors(title: string): { backgroundColor: string;
   }
   const index = Math.abs(hash) % COLOR_PALETTES.length
   return COLOR_PALETTES[index]
-}
-
-/**
- * Calculate contrasting text color from background color
- */
-export function calculateContrastColor(backgroundColor: string): string {
-  // Remove # and convert to RGB
-  const hex = backgroundColor.replace('#', '')
-  const r = parseInt(hex.substr(0, 2), 16)
-  const g = parseInt(hex.substr(2, 2), 16)
-  const b = parseInt(hex.substr(4, 2), 16)
-
-  // Calculate luminance
-  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
-
-  // Return dark or light text based on background
-  return luminance > 0.5 ? '#000000' : '#FFFFFF'
 }
 
