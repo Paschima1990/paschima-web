@@ -59,10 +59,8 @@ export default function AboutPage() {
             ସର୍ବାଧିକ ବିକ୍ରୟ
           </h2>
           <ul className="list-disc pl-6 my-4 space-y-2 sm:space-y-3">
-            <li className="text-gray-700 leading-relaxed italic text-base sm:text-lg">ତୁମ ପରେ - ସ୍ନିଗ୍ଧା ତ୍ରିପାଠୀ</li>
             <li className="text-gray-700 leading-relaxed italic text-base sm:text-lg">ଜମ୍ବୁଲୋକ - ଭୀମ ପ୍ରୁସ୍ତି</li>
             <li className="text-gray-700 leading-relaxed italic text-base sm:text-lg">ଅବଧା ପାଦଚିହ୍ନ - ଆର୍ ବାଳକୃଷ୍ଣ</li>
-            <li className="text-gray-700 leading-relaxed italic text-base sm:text-lg">ବାଟିଘର - ସ୍ନିଗ୍ଧା ତ୍ରିପାଠୀ</li>
             <li className="text-gray-700 leading-relaxed italic text-base sm:text-lg">ଦାଦନ - କ୍ଷେତ୍ରବାସୀ ନାୟକ</li>
           </ul>
         </section>

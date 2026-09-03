@@ -20,10 +20,8 @@ Discover our vast collection of books across various genres. From contemporary f
 
 ## Bestsellers
 
-- *TUMA PARE* by Snigdha Tripathy
 - *Jambuloka* by Bhima Prusty
 - *Abadha Padachinha* by R Balkrishna
-- *BATIGHARA* by Snigdha Tripathy
 - *Dadan* by Kshetrabasi Naik
 
 ## Where to Buy Our Books

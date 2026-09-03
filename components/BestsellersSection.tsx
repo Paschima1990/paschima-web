@@ -31,7 +31,7 @@ export function BestsellersSection({ bestsellers }: Props) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 px-2 sm:px-4 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 max-w-5xl mx-auto justify-items-center px-2 sm:px-4 md:px-0">
           {bestsellers.map((book, index) => (
             <motion.div
               key={book.slug}
@@ -43,9 +43,9 @@ export function BestsellersSection({ bestsellers }: Props) {
                 delay: index * 0.1,
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
-              className="flex justify-center w-full"
+              className="flex justify-center w-full max-w-[280px]"
             >
-              <div className="w-full max-w-full sm:max-w-[240px] md:max-w-[260px] lg:max-w-[280px]">
+              <div className="w-full">
                 <Book3DCard
                   title={book.title}
                   author={book.author}
